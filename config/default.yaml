@@ -1,0 +1,42 @@
+# Inertial Field Nullifier (IFN) — Default Configuration
+# GALACTIC-UNION / ASTRAL-GUARDIAN Domain
+
+system:
+  name: "Inertial Field Nullifier (IFN)"
+  version: "1.0.0"
+  environment: "production"
+  log_level: "INFO"
+
+
+field_generator:
+  envelope_radius_m: 100
+  max_cancellation_g: 10
+  tunable_pseudogravity:
+    min_g: 0.0
+    max_g: 2.0
+  field_stability_ppm: 0.01
+
+cancellation:
+  response_time_ms: 1
+  accelerometer_count: 24
+  feedback_rate_hz: 10000
+
+monitor:
+  field_uniformity_threshold_ppm: 10
+  alert_on_breach: true
+  safety_shutoff_threshold_g: 12
+
+
+api:
+  rest:
+    host: "0.0.0.0"
+    port: 8080
+  auth:
+    jwt_expiry_minutes: 60
+
+monitoring:
+  metrics_interval_s: 10
+  alert_channels:
+    - "astral_guardian_core"
+    - "galactic_union_council"
+    - "nexus_prime"
